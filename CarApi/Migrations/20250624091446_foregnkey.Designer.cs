@@ -2,6 +2,7 @@
 using CarApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CarApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250624091446_foregnkey")]
+    partial class foregnkey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,14 +39,14 @@ namespace CarApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("PersonId")
+                    b.Property<int>("OwnerPersonId")
                         .HasColumnType("integer");
 
                     b.HasKey("CarId");
 
                     b.HasIndex("ModelId");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("OwnerPersonId");
 
                     b.ToTable("Cars");
                 });
@@ -100,7 +103,7 @@ namespace CarApi.Migrations
 
                     b.HasOne("CarApi.Data.Entities.Person", "Owner")
                         .WithMany("cars")
-                        .HasForeignKey("PersonId")
+                        .HasForeignKey("OwnerPersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

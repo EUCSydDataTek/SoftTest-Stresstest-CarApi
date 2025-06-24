@@ -1,8 +1,16 @@
-﻿namespace CarApi.Data.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CarApi.Data.Entities
 {
     public class Car
     {
         public int CarId { get; set; }
+
+        [ForeignKey(nameof(Model))]
+        public int ModelId { get; set; }
+
+        [ForeignKey(nameof(Owner))]
+        public int PersonId { get; set; }
 
         public string Name { get; set; } = string.Empty;
 

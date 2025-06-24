@@ -1,0 +1,48 @@
+﻿@CarApi_HostAddress = http://localhost:5158
+
+GET {{CarApi_HostAddress}}/api/cars
+
+###
+
+@CarId=1
+GET {{CarApi_HostAddress}}/api/cars/{{CarId}}
+
+###
+
+POST {{CarApi_HostAddress}}/api/cars
+Content-Type: application/json
+
+{
+  "CarName":"A Car",
+  "ModelId": 1,
+  "OwnerId": 0,
+  "OwnerFirstName":"Jane",
+  "OwnerLastName":"Doe"
+}
+
+###
+
+POST {{CarApi_HostAddress}}/api/cars
+Content-Type: application/json
+
+{
+  "CarName":"Two Car",
+  "ModelId": 1,
+  "OwnerId": 2
+}
+
+###
+
+
+PUT {{CarApi_HostAddress}}/api/cars/{{CarId}}
+Content-Type: application/json
+
+{
+  "CarName":"Edited Car"
+}
+
+###
+
+DELETE {{CarApi_HostAddress}}/api/cars/{{CarId}}
+
+###

@@ -10,9 +10,12 @@ namespace CarApi.Data
 
         public static async Task CreateDemoDataAsync(this AppDbContext context,int amount)
         {
-            context.Add(CreateCarsContext(amount));
+            if (!await context.Cars.AnyAsync())
+            {
+                context.AddRange(CreateCarsContext(amount));
 
-            await context.SaveChangesAsync();
+                await context.SaveChangesAsync();
+            }
         }
 
         public static Entities.Person CreatePerson() {

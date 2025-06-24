@@ -14,6 +14,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Postgress"));
 });
 
+builder.Services.AddScoped<ICarService,CarService>();
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
