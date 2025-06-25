@@ -7,6 +7,8 @@ namespace CarApi.Services
     public static class DtoExtensions
     {
 
+        #region Car
+
         public static CarInfoDto ToCarInfoDto(this Car car)
         {
             return new CarInfoDto()
@@ -31,5 +33,46 @@ namespace CarApi.Services
             };
         }
 
+        #endregion Car
+
+        #region Person
+
+        public static PersonDto ToPersonDto(this Person person)
+        {
+            return new()
+            {
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                PersonId = person.PersonId,
+                CarsOwned = person.cars.Count()
+            };
+        }
+
+        public static PersonDetailDto TodoPersonDetailDto(this Person person)
+        {
+            PersonDetailDto p = new()
+            {
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                PersonId = person.PersonId,
+                CarsOwned = person.cars.Count(),
+            };
+
+            p.Cars = person.cars.Select(c => c.ToCarInfoDto()).ToList();
+
+            return p;
+        }
+
+        #endregion Person
+
+        public static CarModelDto ToCarModelDto(this CarModel model)
+        {
+            return new()
+            {
+                ModelId = model.CarModelId,
+                Name = model.ModelName,
+                Manufacturer = model.Manufacturer
+            };
+        }
     }
 }

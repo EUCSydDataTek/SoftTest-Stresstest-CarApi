@@ -46,3 +46,40 @@ Content-Type: application/json
 DELETE {{CarApi_HostAddress}}/api/cars/{{CarId}}
 
 ###
+
+GET {{CarApi_HostAddress}}/api/people
+
+###
+
+@PersonId=7
+GET {{CarApi_HostAddress}}/api/people/{{PersonId}}
+
+###
+
+POST {{CarApi_HostAddress}}/api/people
+Content-Type: application/json
+
+{
+  "FirstName":"Jane",
+  "LastName":"Doe"
+}
+
+###
+
+PUT {{CarApi_HostAddress}}/api/people/{{PersonId}}
+Content-Type: application/json
+
+{
+  "FirstName":"John",
+  "LastName":"Doe"
+}
+
+###
+
+DELETE {{CarApi_HostAddress}}/api/people?PersonId={{PersonId}}
+
+###
+
+GET {{CarApi_HostAddress}}/api/carmodels
+
+###

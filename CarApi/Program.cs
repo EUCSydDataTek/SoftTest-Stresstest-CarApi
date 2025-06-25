@@ -15,6 +15,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddScoped<ICarService,CarService>();
+builder.Services.AddScoped<IPersonService,PersonService>();
+builder.Services.AddScoped<ICarModelService,CarModelService>();
 
 builder.Services.AddOpenApi();
 
