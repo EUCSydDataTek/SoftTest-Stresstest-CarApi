@@ -41,7 +41,7 @@ jobs:
         id: push
         uses: docker/build-push-action@v4
         with:
-          file: ./CarApi/Dockerfile
+          file: ${{GITHUB_WORKSPACE}}/CarApi/Dockerfile
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
