@@ -1,0 +1,22 @@
+services:
+  carapi:
+    image: ${DOCKER_REGISTRY-}carapi
+    build:
+      context: .
+      dockerfile: CarApi/Dockerfile
+    ports:
+        - 80:8080
+    
+    depends_on: 
+        - db
+    env_file: "appsettings.env"
+  db:
+    image: postgres
+    restart: always
+    volumes:
+        - CarApiDb:/var/lib/postgresql/data
+    environment:
+        - POSTGRES_PASSWORD=PAssw0rd
+        
+volumes:
+  CarApiDb:
