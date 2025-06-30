@@ -1,9 +1,6 @@
 services:
   carapi:
-    image: ${DOCKER_REGISTRY-}carapi
-    build:
-      context: .
-      dockerfile: CarApi/Dockerfile
+    image: ghcr.io/eucsyddatatek/softtest-stresstest-carapi:normal
     ports:
         - 80:8080
     

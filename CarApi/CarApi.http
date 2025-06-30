@@ -4,7 +4,7 @@ GET {{CarApi_HostAddress}}/api/cars
 
 ###
 
-@CarId=1
+@CarId=2
 GET {{CarApi_HostAddress}}/api/cars/{{CarId}}
 
 ###
