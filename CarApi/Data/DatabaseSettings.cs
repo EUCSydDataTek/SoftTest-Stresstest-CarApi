@@ -2,11 +2,11 @@
 {
     public class DatabaseSettings
     {
-        public string DbName { get; set; } = string.Empty;
+        public string DbName { get; set; } = "CarDb";
 
-        public string DbUser { get; set; } = string.Empty;
+        public string DbUser { get; set; } = "postgres";
 
-        public string DbPassword { get; set; } = string.Empty;
+        public string DbPassword { get; set; } = "P@ssw0rd";
 
         public int Dbport { get; set; } = 5432;
 
