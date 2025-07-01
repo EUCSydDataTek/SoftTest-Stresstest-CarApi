@@ -10,7 +10,7 @@
 
         public int Dbport { get; set; } = 5432;
 
-        public string DbAddress { get; set; } = "localhost";
+        public string DbAddress { get; set; } = "db";
 
         public string GetConnectionString()
         {
