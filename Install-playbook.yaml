@@ -7,7 +7,6 @@
     - name: Update Apt lists
       ansible.builtin.apt:
         update_cache: true
-        upgrade: true
       become: true
       retries: 5
 
