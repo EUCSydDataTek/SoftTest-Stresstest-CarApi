@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "CarApi.sln"
+    "dotnet.defaultSolution": "CarApi.sln",
+    "ansible.python.interpreterPath": "c:\\Users\\jako5457\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
 }
