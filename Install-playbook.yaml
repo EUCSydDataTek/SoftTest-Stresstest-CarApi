@@ -2,17 +2,12 @@
   hosts: Car-Api
   gather_facts: true
   tasks:
-    - name: Stop Unattended upgrades (Ubuntu)
-      when: ansible_distribution == "Ubuntu"
-      ansible.builtin.service:
-        name: unattended-upgrades
-        state: stopped
-      become: true
 
     - name: Full Apt upgrade
       ansible.builtin.apt:
         update_cache: true
         upgrade: true
+      retries: 20
       become: true
 
     - name: Install cockpit
