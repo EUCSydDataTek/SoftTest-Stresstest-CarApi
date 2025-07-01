@@ -4,12 +4,18 @@
   become_method: sudo
   tasks:
 
-    - name: Full Apt upgrade
+    - name: Update Apt lists
       ansible.builtin.apt:
         update_cache: true
         upgrade: true
       become: true
-      retries: 20
+      retries: 5
+
+    - name: Full Apt upgrade
+      ansible.builtin.apt:
+        upgrade: true
+      become: true
+      retries: 5
 
     - name: Install cockpit
       ansible.builtin.apt:
