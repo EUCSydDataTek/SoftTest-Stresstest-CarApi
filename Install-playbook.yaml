@@ -1,0 +1,76 @@
+- name: Install and setup Car-Api Server
+  hosts: Car-Api
+  gather_facts: true
+  tasks:
+    - name: Stop Unattended upgrades (Ubuntu)
+      when: ansible_distribution == "Ubuntu"
+      ansible.builtin.service:
+        name: unattended-upgrades
+        state: stopped
+      become: true
+
+    - name: Full Apt upgrade
+      ansible.builtin.apt:
+        update_cache: true
+        upgrade: true
+      become: true
+
+    - name: Install cockpit
+      ansible.builtin.apt:
+        name: cockpit
+        state: present
+      become: true
+
+    - name: Install Podman and Compose
+      ansible.builtin.apt:
+        name:
+          - podman
+          - podman-compose
+          - cockpit-podman
+        state: present
+      become: true
+
+    - name: Reboot
+      ansible.builtin.reboot:
+      become: true
+
+    - name: Create compose directory
+      ansible.builtin.file:
+        state: directory
+        path: ./Car-Api
+        mode: '777'
+
+    - name: Transfer Compose file
+      ansible.builtin.copy:
+        remote_src: false
+        src: docker-compose.yml
+        dest: ./Car-Api/compose.yml
+        mode: '777'
+
+    - name: Transfer Config file
+      ansible.builtin.copy:
+        remote_src: false
+        src: appsettings.env
+        dest: ./Car-Api/appsettings.env
+        mode: '777'
+
+    - name: Start podman socket service
+      ansible.builtin.service:
+        name: podman.socket
+        state: started
+      become: true
+
+    - name: Setup WatchTower
+      containers.podman.podman_container:
+        name: WatchTower
+        image: docker.io/containrrr/watchtower
+        volume:
+          - /var/run/podman/podman.sock:/var/run/docker.sock
+        restart_policy: "always"
+      become: true
+
+    - name: Run Compose file
+      ansible.builtin.command:
+        chdir: ./Car-Api
+        cmd: podman-compose up -d
+      become: true
