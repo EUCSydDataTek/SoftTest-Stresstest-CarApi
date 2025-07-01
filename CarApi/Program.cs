@@ -12,7 +12,11 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Postgress"));
+    DatabaseSettings Dbsettings = new DatabaseSettings();
+
+    builder.Configuration.GetSection("Postgress").Bind(Dbsettings);
+
+    options.UseNpgsql(Dbsettings.GetConnectionString());
 });
 
 builder.Services.AddScoped<ICarService,CarService>();
