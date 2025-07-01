@@ -7,8 +7,8 @@
       ansible.builtin.apt:
         update_cache: true
         upgrade: true
-      retries: 20
       become: true
+      retries: 20
 
     - name: Install cockpit
       ansible.builtin.apt:
