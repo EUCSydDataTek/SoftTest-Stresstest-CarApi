@@ -16,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
     builder.Configuration.GetSection("Postgress").Bind(Dbsettings);
 
+    Console.WriteLine($"HERE >>>> {Dbsettings.GetConnectionString()}");
+
     options.UseNpgsql(Dbsettings.GetConnectionString());
 });
 
