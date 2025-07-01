@@ -1,6 +1,6 @@
 services:
   carapi:
-    image: ghcr.io/eucsyddatatek/softtest-stresstest-carapi:normal
+    image: ghcr.io/eucsyddatatek/softtest-stresstest-carapi:main
     ports:
         - 80:8080
     
