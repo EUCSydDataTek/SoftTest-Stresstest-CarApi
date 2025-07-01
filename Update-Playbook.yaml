@@ -18,5 +18,5 @@
     - name: Start Compose
       ansible.builtin.command:
         chdir: ./Car-Api
-        cmd: podman-compose down -d
+        cmd: podman-compose up -d
       become: true
