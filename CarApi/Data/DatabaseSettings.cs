@@ -6,7 +6,7 @@
 
         public string DbUser { get; set; } = "postgres";
 
-        public string DbPassword { get; set; } = "P@ssw0rd";
+        public string DbPassword { get; set; } = "PAssw0rd";
 
         public int Dbport { get; set; } = 5432;
 
