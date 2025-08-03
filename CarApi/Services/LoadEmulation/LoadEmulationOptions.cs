@@ -11,6 +11,9 @@
         {
             var Step = CalculateOneStep();
 
+            if (Step == 0)
+                return 50;
+
             return Convert.ToInt32(CurrentRemaining / Step);
         }
 
