@@ -1,6 +1,7 @@
 ﻿using CarApi.Services.LoadEmulation.Background;
 using CarApi.Services.LoadEmulation.Middleware;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 
 namespace CarApi.Services.LoadEmulation
 {
@@ -67,6 +68,16 @@ namespace CarApi.Services.LoadEmulation
             return app;
         }
 
+        public static WebApplication UseLoadEmulationErrors(this WebApplication app)
+        {
+            var ile = app.Services.GetRequiredService<ILEService>();
 
+            if (ile.Options.Enable)
+            {
+                app.UseMiddleware<RequestErrorMiddleware>();
+            }
+
+            return app;
+        }
     }
 }

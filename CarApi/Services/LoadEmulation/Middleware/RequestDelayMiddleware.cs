@@ -22,6 +22,7 @@
             await Task.Delay(_timeout);
             await _next(context);
         }
+
         private Task CalculateDelayAsync()
         {
             var Steps = _LeService.Options.CalculateCurrentSteps(_LeService.GetBucketState());
