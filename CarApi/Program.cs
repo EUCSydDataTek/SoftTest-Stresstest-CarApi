@@ -2,6 +2,8 @@ using CarApi.Data;
 using CarApi.Services;
 using CarApi.Services.LoadEmulation;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,11 +37,14 @@ var app = builder.Build();
 
 await app.SetupDatabaseAsync(); // create database
 
+app.MapScalarApiReference();
 app.MapOpenApi();
 
 app.UseLoadEmulationBucket(); // Set load emulation bucket
 app.UseLoadEmulationDelay(); // Set load emulation delay
 app.UseLoadEmulationErrors(); // add load emulation errors
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
