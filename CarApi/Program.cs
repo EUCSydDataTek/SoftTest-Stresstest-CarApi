@@ -39,13 +39,13 @@ var app = builder.Build();
 
 await app.SetupDatabaseAsync(); // create database
 
+app.MapStaticAssets();
 app.MapScalarApiReference();
 app.MapOpenApi();
 
 app.UseLoadEmulationBucket(); // Set load emulation bucket
 app.UseLoadEmulationDelay(); // Set load emulation delay
 app.UseLoadEmulationErrors(); // add load emulation errors
-
 
 
 // Configure the HTTP request pipeline.
