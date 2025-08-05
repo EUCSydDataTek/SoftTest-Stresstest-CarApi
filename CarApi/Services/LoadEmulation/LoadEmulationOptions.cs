@@ -2,7 +2,7 @@
 {
     public class LoadEmulationOptions
     {
-        public bool Enable = true;
+        public bool Enable = false;
         public uint MaxRequests = 8000;
         public uint RequestRefillAmount = 500;
         public uint RequestRefillRateMs = 10000;
