@@ -3,9 +3,9 @@
     public class LoadEmulationOptions
     {
         public bool Enable = false;
-        public uint MaxRequests = 100;
-        public uint RequestRefillAmount = 10;
-        public uint RequestRefillRateMs = 5000;
+        public uint MaxRequests = 8000;
+        public uint RequestRefillAmount = 500;
+        public uint RequestRefillRateMs = 10000;
 
         public int CalculateCurrentSteps(uint CurrentRemaining)
         {
