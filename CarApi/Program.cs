@@ -4,6 +4,7 @@ using CarApi.Services.FakeLoad;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -31,10 +32,13 @@ var app = builder.Build();
 
 await app.SetupDatabaseAsync(); // create database
 
+app.MapStaticAssets();
+app.MapScalarApiReference();
 app.MapOpenApi();
 app.MapScalarApiReference();
 
 app.UseFakeLoad();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
