@@ -18,8 +18,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
     builder.Configuration.GetSection("Postgress").Bind(Dbsettings);
 
-    Console.WriteLine($"HERE >>>> {Dbsettings.GetConnectionString()}");
-
     options.UseNpgsql(Dbsettings.GetConnectionString());
 });
 
@@ -31,6 +29,7 @@ builder.Services.AddScoped<ICarModelService,CarModelService>();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
 
 await app.SetupDatabaseAsync(); // create database
 
