@@ -33,9 +33,8 @@ var app = builder.Build();
 
 await app.SetupDatabaseAsync(); // create database
 
-app.MapStaticAssets();
-app.MapScalarApiReference();
 app.MapOpenApi();
+app.MapStaticAssets();
 app.MapScalarApiReference();
 
 app.UseFakeLoad();
