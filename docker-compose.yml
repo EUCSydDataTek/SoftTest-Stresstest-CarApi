@@ -4,7 +4,11 @@ services:
     build:
       context: .
       dockerfile: CarApi/Dockerfile
-    env_file: appsettings.env
+    environment:
+      Postgress__DbName: CarDb
+      Postgress__DbUser: postgres
+      Postgress__DbPassword: postgress
+      Postgress__DbAddress: db
     depends_on:
       - db
     ports:
