@@ -1,19 +1,19 @@
 services:
   carapi:
-    image: ghcr.io/eucsyddatatek/softtest-stresstest-carapi:normal
+    image: ${DOCKER_REGISTRY-}carapi
+    build:
+      context: .
+      dockerfile: CarApi/Dockerfile
+    env_file: appsettings.env
     ports:
-        - 80:8080
-    
-    depends_on: 
-        - db
-    env_file: "appsettings.env"
+      - 5001:8080
   db:
-    image: docker.io/library/postgres
-    restart: always
-    volumes:
-        - CarApiDb:/var/lib/postgresql/data
-    environment:
-        - POSTGRES_PASSWORD=PAssw0rd
-        
+   image: postgres
+   restart: always
+   volumes:
+    -  CarApiDb:/var/lib/postgresql
+   environment:
+     POSTGRES_PASSWORD: postgress
+
 volumes:
   CarApiDb:

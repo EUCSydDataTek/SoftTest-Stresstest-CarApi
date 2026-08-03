@@ -1,0 +1,1 @@
+This file will make the app begin to send random errors when removed.
